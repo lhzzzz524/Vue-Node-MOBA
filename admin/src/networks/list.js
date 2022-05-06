@@ -5,3 +5,10 @@ export const getListData = () => {
     url: '/categories'
   })
 }
+
+export const getDelData = (id) => {
+  return request({
+    url: `/categories/${id}`,
+    method: 'delete'
+  })
+}
