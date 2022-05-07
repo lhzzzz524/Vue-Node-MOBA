@@ -36,9 +36,10 @@ module.exports = app => {
     const model = await req.model.findByIdAndDelete(req.params.id)
     res.send(model)
   })
+  // CRUD接口 通过资源路由 models 对应的mongodb里的表，然后给请求路径上挂载model 供子路由访问
   app.use('/admin/api/rest/:resource', async (req, res, next) => {
     const myModelName = require('inflection').classify(req.params.resource)
-    req.model = require(`../../models/${myModelName}`) //给请求路径上挂载model 供子路由访问
+    req.model = require(`../../models/${myModelName}`)
     next()
   }, router)
 

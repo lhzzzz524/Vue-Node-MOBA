@@ -36,7 +36,7 @@ import {
   getSetInputData,
   getUpdata,
 } from "../../networks/article/edit";
-import { getListData } from "../../networks/list";
+import { getListData } from "../../networks/categories/list";
 import { VueEditor } from "vue2-editor";
 import axios from "axios";
 export default {

@@ -144,12 +144,10 @@ import {
   getSetInputData,
   getUpdata,
 } from "../../networks/heros/edit";
-import { getListData } from "../../networks/list";
+import { getListData } from "../../networks/categories/list";
 import { getGoodsData } from "../../networks/goods/list";
-import About from "../../../../web/src/views/About.vue";
 
 export default {
-  components: { About },
   props: {
     id: {
       type: String,
@@ -236,6 +234,4 @@ export default {
   height: 100px;
   display: block;
 }
-</style>
-
 </style>

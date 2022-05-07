@@ -3,18 +3,14 @@
     <h1>分类列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID"></el-table-column>
-      <el-table-column prop="name" label="物品名称"></el-table-column>
-      <el-table-column prop="icon" label="物品图片">
-        <template slot-scope="scope">
-          <img :src="scope.row.icon" alt="" style="height: 4rem" />
-        </template>
-      </el-table-column>
+      <el-table-column prop="parent.name" label="上级分类"></el-table-column>
+      <el-table-column prop="name" label="分类名称"></el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template slot-scope="scope">
           <el-button
             type="text"
             size="small"
-            @click="$router.push(`/items/edit/${scope.row._id}`)"
+            @click="$router.push(`/categories/edit/${scope.row._id}`)"
             >编辑</el-button
           >
           <el-button type="text" size="small" @click="del(scope.row)">
@@ -27,7 +23,7 @@
 </template>
 
 <script>
-import { getGoodsData, getDelData } from "../../networks/goods/list";
+import { getListData, getDelData } from "../../networks/categories/list";
 export default {
   data() {
     return {
@@ -36,11 +32,11 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await getGoodsData();
+      const res = await getListData();
       this.items = res.data;
     },
     del(row) {
-      this.$confirm(`是否删除改物品${row.name}?`, "提示", {
+      this.$confirm(`是否删除改分类${row.name}?`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",

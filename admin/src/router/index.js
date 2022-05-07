@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from "../views/main.vue"
-import Edit from '../views/edit/categoriesEdit.vue'
-import List from '../views/list/categoriesList.vue'
+import Edit from '../views/categories/categoriesEdit.vue'
+import List from '../views/categories/categoriesList.vue'
 
 import ItemsEdit from '../views/goods/edit.vue'
 import ItemsList from '../views/goods/list.vue'
@@ -13,9 +13,13 @@ import HerosList from '../views/heros/list.vue'
 import ArticleEdit from '../views/article/edit.vue'
 import ArticleList from '../views/article/list.vue'
 
+import AdsEdit from '../views/ads/edit.vue'
+import AdsList from '../views/ads/list.vue'
+
+import AdminUserEdit from '../views/adminUser/edit.vue'
+import AdminUserList from '../views/adminUser/list.vue'
 
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/',
@@ -84,6 +88,38 @@ const routes = [
         path: '/article/edit/:id',
         name: 'articleEdit',
         component: ArticleEdit,
+        props: true
+      },
+      {
+        path: '/ads/create',
+        name: 'adsCreate',
+        component: AdsEdit,
+      },
+      {
+        path: '/ads/list',
+        name: 'adsList',
+        component: AdsList
+      },
+      {
+        path: '/ads/edit/:id',
+        name: 'adsEdit',
+        component: AdsEdit,
+        props: true
+      },
+      {
+        path: '/adminUser/create',
+        name: 'adminUserCreate',
+        component: AdminUserEdit,
+      },
+      {
+        path: '/adminUser/list',
+        name: 'adminUserList',
+        component: AdminUserList
+      },
+      {
+        path: '/adminUser/edit/:id',
+        name: 'adminUserEdit',
+        component: AdminUserEdit,
         props: true
       },
     ]

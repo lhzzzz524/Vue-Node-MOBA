@@ -24,8 +24,12 @@
 </template>
 
 <script>
-import { getInputData, getSetInputData, getUpdata } from "../../networks/edit";
-import { getListData } from "../../networks/list";
+import {
+  getInputData,
+  getSetInputData,
+  getUpdata,
+} from "../../networks/categories/edit";
+import { getListData } from "../../networks/categories/list";
 export default {
   props: {
     id: {

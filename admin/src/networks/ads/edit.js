@@ -1,8 +1,8 @@
-import { request } from './request'
+import { request } from '../request'
 
 export const getInputData = (model) => {
   return request({
-    url: '/categories',
+    url: '/advertising',
     method: 'post',
     data: model
   })
@@ -10,14 +10,14 @@ export const getInputData = (model) => {
 
 export const getSetInputData = (id) => {
   return request({
-    url: `/categories/${id}`,
+    url: `/advertising/${id}`,
     method: 'get'
   })
 }
 
 export const getUpdata = (id, model) => {
   return request({
-    url: `/categories/${id}`,
+    url: `/advertising/${id}`,
     method: 'put',
     data: model
   })
