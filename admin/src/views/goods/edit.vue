@@ -11,6 +11,7 @@
           :action="uploadUrl()"
           :show-file-list="false"
           :on-success="afterUpload"
+          :headers="uploadHeader()"
         >
           <img v-if="model.icon" :src="model.icon" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -29,12 +30,14 @@ import {
   getSetInputData,
   getUpdata,
 } from "../../networks/goods/edit";
+import { uploadMixin } from "../../mixin";
 export default {
   props: {
     id: {
       type: String,
     },
   },
+  mixins: [uploadMixin],
   data() {
     return {
       model: {},

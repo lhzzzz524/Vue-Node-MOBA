@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import About from "../../../../web/src/views/About.vue";
 import {
   getInputData,
   getSetInputData,
@@ -54,7 +53,6 @@ import {
 } from "../../networks/ads/edit";
 
 export default {
-  components: { About },
   props: {
     id: {
       type: String,
