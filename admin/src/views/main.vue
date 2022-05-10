@@ -9,7 +9,7 @@
       >
         <el-submenu index="1">
           <template slot="title"
-            ><i class="el-icon-message"></i>内容管理</template
+            ><i class="el-icon-tickets"></i>内容管理</template
           >
           <el-menu-item-group>
             <template slot="title">物品</template>
@@ -23,9 +23,7 @@
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="2">
-          <template slot="title"
-            ><i class="el-icon-message"></i>运营管理</template
-          >
+          <template slot="title"><i class="el-icon-menu"></i>运营管理</template>
           <el-menu-item-group>
             <template slot="title">广告</template>
             <el-menu-item index="/ads/create">新建广告位</el-menu-item>
@@ -40,7 +38,7 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title"
-            ><i class="el-icon-message"></i>系统设置</template
+            ><i class="el-icon-setting"></i>系统设置</template
           >
           <el-menu-item-group>
             <template slot="title">分类</template>
@@ -49,8 +47,8 @@
           </el-menu-item-group>
           <el-menu-item-group>
             <template slot="title">管理员</template>
-            <el-menu-item index="/admin_users/create">新增管理员</el-menu-item>
-            <el-menu-item index="/admin_users/list">管理员列表</el-menu-item>
+            <el-menu-item index="/adminUser/create">新增管理员</el-menu-item>
+            <el-menu-item index="/adminUser/list">管理员列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

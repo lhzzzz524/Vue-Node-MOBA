@@ -1,6 +1,10 @@
 module.exports = app => {
   const express = require('express')
   const path = require('path')
+  const jwt = require('jsonwebtoken')
+  const assert = require('http-assert')
+  require('express-async-errors')
+  const AdminUser = require('../../models/AdminUser')
   const router = express.Router({
     mergeParams: true
   })
@@ -10,7 +14,16 @@ module.exports = app => {
     res.send(model)
   })
   //获取分类列表
-  router.get('/', async (req, res) => {
+  router.get('/', async (req, res, next) => {
+    const token = String(req.headers.authorization || '').split(' ').pop()
+    assert(token, 401, '请先登录')
+    // 解析token 参数1:token字符串 参数2:加密key(密钥) 参数3:设置一些解密的方法
+    const { id } = jwt.verify(token, app.get('secret'))
+    assert(id, 401, '无效的token')
+    req.user = await AdminUser.findById(id)
+    assert(req.user, 401, '请先登录')
+    next()
+  }, async (req, res) => {
     let items = {}
     if (req.model.modelName === 'Category') {
       items = await req.model.find().populate('parent').limit(10)
@@ -51,5 +64,28 @@ module.exports = app => {
     const file = req.file
     file.url = `http://localhost:3000/uploads/${file.filename}`
     res.send(file)
+  })
+
+  app.post('/admin/api/login', async (req, res) => {
+    const { userName, passWord } = req.body
+    //1.根据用户名找用户
+    const user = await AdminUser.findOne({ userName }).select('+passWord')
+    assert(user, 422, '账号或密码错误')
+    //2.校验密码
+    const isValid = require('bcryptjs').compareSync(passWord, user.passWord)
+    assert(isValid, 422, '账号或密码错误')
+
+    //3.返回token
+    // 生成token 参数1:payload 可以存储用户信息 参数2:加密的key或者叫做密钥 参数3:其他选项 expiresIn表示有效期
+    const token = jwt.sign({
+      id: user._id
+    }, app.get('secret'))
+    res.send({ token })
+  })
+
+  app.use(async (err, req, res, next) => {
+    res.status(err.statusCode || 500).send({
+      message: err.message
+    })
   })
 }

@@ -35,7 +35,7 @@ export default {
       this.items = res.data;
     },
     del(row) {
-      this.$confirm(`是否删除改广告位${row.name}?`, "提示", {
+      this.$confirm(`是否删除改广告位：${row.name}?`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
