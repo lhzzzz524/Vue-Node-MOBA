@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 13px;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue",
+    Helvetica,
+    STHeiTi,
+    微软雅黑,
+    sans-serif;
+  line-height: 1.2em;
+  background-color: #f1f1f1;
+}
+
+a {
+  color: #222;
+}
+
+//colors
+$colors: (
+  'tabs':#db9e3f,
+  //主标签页
+  'white':#fff,
+  //背景
+  'section-title':#212222,
+  //章标题
+  'section-tabs':#343440,
+  //章标签页
+  'unfold':#f9f9f9,
+  //展开（收起）
+);
+
+@each $colorsKey,
+$color in $colors {
+  .text-#{$colorsKey} {
+    color: $color;
+  }
+
+  .bgc-#{$colorsKey} {
+    color: $color;
+  }
+}
+
+//font-size
+$font-sizes: (
+  xs:0.7692,
+  //10px
+  sm:0.9231,
+  //12px
+  md:1,
+  //13px
+  lg:1.0769,
+  //14px
+  xl:1.2308,
+  //16px
+);
+
+@each $sizeKey,
+$size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * 1rem;
+  }
+}
+
+//flex
+.d-flex {
+  display: flex;
+}
+
+.flex-cl {
+  flex-direction: column;
+}
+
+$flex-jc: (
+  start:flex-start,
+  end:flex-end,
+  center:center,
+  between:space-between,
+  around:space-around,
+);
+
+@each $key,
+$value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+$flex-ai: (
+  start:flex-start,
+  end:flex-end,
+  center:center,
+  stretch:stretch,
+);
+
+@each $key,
+$value in $flex-ai {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+
+.flex-1 {
+  flex: 1
+}
