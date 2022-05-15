@@ -19,6 +19,7 @@ body {
 }
 
 a {
+  text-decoration: none;
   color: #222;
 }
 
@@ -43,7 +44,7 @@ $color in $colors {
   }
 
   .bgc-#{$colorsKey} {
-    color: $color;
+    background-color: $color;
   }
 }
 
