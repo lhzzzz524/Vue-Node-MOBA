@@ -16,9 +16,9 @@ export default {
   data() {
     return {
       imgList: [
-        require("../assets/img/swiper1.jpeg"),
-        require("../assets/img/swiper2.jpeg"),
-        require("../assets/img/swiper3.jpeg"),
+        require("../../assets/img/swiper1.jpeg"),
+        require("../../assets/img/swiper2.jpeg"),
+        require("../../assets/img/swiper3.jpeg"),
       ],
       swiperOptions: {
         loop: true,

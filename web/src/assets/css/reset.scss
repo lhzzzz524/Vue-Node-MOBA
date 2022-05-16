@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   outline: none;
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -109,4 +111,20 @@ $value in $flex-ai {
 
 .flex-1 {
   flex: 1
+}
+
+.card-pt {
+  margin-top: 1rem;
+  border-top: 1px solid map-get($colors, unfold);
+  border-bottom: 1px solid map-get($colors, unfold);
+}
+
+li {
+  list-style-type: none;
+}
+
+.sprite {
+  margin-bottom: 0.4rem;
+  background: url("../img/elfPic.png") no-repeat 0 0;
+  background-size: 28.8462rem;
 }
