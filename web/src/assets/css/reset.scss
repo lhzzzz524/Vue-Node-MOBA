@@ -113,10 +113,14 @@ $value in $flex-ai {
   flex: 1
 }
 
-.card-pt {
+.card-mt {
   margin-top: 1rem;
   border-top: 1px solid map-get($colors, unfold);
   border-bottom: 1px solid map-get($colors, unfold);
+}
+
+.card-title-pl {
+  padding: 0 1.7rem;
 }
 
 li {

@@ -1,6 +1,6 @@
 <template>
-  <div class="map card-pt bgc-white">
-    <ul class="map-content d-flex fs-sm">
+  <div class="map card-mt bgc-white">
+    <ul class="map-content d-flex fs-sm" :class="{ active: isUnfold === true }">
       <li
         class="d-flex flex-cl ai-center"
         v-for="(item, index) in 12"
@@ -10,15 +10,25 @@
         <span>爆料站</span>
       </li>
     </ul>
-    <div class="map-unfold bgc-unfold d-flex jc-center">
+    <div class="map-unfold bgc-unfold d-flex jc-center" v-show="!isUnfold">
       <div class="sprite sprite-unfold"></div>
-      <span>收起</span>
+      <span @click="isUnfold = !isUnfold">收起</span>
+    </div>
+    <div class="map-unfold bgc-unfold d-flex jc-center" v-show="isUnfold">
+      <div class="sprite sprite-unfold turn"></div>
+      <span @click="isUnfold = !isUnfold">展开</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isUnfold: false,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +39,8 @@ export default {};
     li {
       width: 25%;
       color: #222;
-      margin-bottom: 1.5rem;
+      padding-top: 0.3rem;
+      margin-bottom: 1.6rem;
       text-align: center;
       border-left: 1px solid #d4d9de;
       .sprite-news {
@@ -41,7 +52,17 @@ export default {};
     :nth-child(4n + 1) {
       border: 0;
     }
+    &.active {
+      overflow: hidden;
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+      li {
+        flex-shrink: 0;
+        border-left: 1px solid #d4d9de;
+      }
+    }
   }
+
   &-unfold {
     padding: 0.6rem 0;
     .sprite-unfold {
@@ -52,6 +73,9 @@ export default {};
       margin-right: 0.2rem;
       background-position: 38.577% 52.076%;
     }
+  }
+  .turn {
+    transform: rotate(180deg);
   }
 }
 </style>
